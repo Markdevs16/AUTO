@@ -22,7 +22,7 @@ module.exports.run = async function({ api, event, args }) {
         return api.sendMessage('Please provide a song name, for example: music selos', event.threadID, event.messageID);
     }
 
-    const ratbu = `http://linda.hidencloud.com:25636/yts?q=${encodeURIComponent(chillli)&apikey=syugg}`;
+    const ratbu = `http://linda.hidencloud.com:25636/yts?q=&apikey=syugg${encodeURIComponent(chillli)}`;
 
     try {
         const response = await axios.get(ratbu, { responseType: 'arraybuffer' });
