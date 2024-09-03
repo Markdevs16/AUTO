@@ -17,7 +17,6 @@ module.exports.config = {
 module.exports.run = async function({ api, event, args }) {
     const chillli = args.join(' ');
     const userId = event.senderID;
-    api.sendMessage("😤 Wait lng ha...", threadID, messageID);
 
     if (!chillli) {
         return api.sendMessage('Please provide a song name, for example: music selos', event.threadID, event.messageID);
