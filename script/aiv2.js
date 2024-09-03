@@ -1,33 +1,36 @@
 const axios = require('axios');
 
 module.exports.config = {
-  name: 'aiv2',
+  name: 'ai2',
   version: '1.0.0',
   role: 0,
   hasPrefix: false,
   aliases: ['gpt-3.5', 'turbo'],
-  description: "An AI command powered by GPT-3.5 Turbo",
-  usage: "Ai-v2 [prompt]",
+  description: "AI",
+  usage: "Ai2 [prompt]",
   credits: 'Developer',
   cooldown: 3,
 };
 
 module.exports.run = async function({ api, event, args }) {
-  const input = args.join(' ');
+  
+const axios = require('axios');
 
-  if (!input) {
-    api.sendMessage(`Please provide a question or statement after 'aiv2'. For example: 'aiv2 What is the capital of France?'`, event.threadID, event.messageID);
-    return;
-  }
-
-  api.sendMessage('Please wait...', event.threadID, event.messageID);
-
+const test = async () => {
   try {
-    const { data } = await axios.get(`https://nash-api-end.onrender.com/gpt-3_5-turbo?prompt=${encodeURIComponent(input)}`);
-    const response = data.result.reply;
+    const response = await axios.post('https://free-ai-models.vercel.app/v1/chat/completions', {
+      model: 'gemini-1.5-pro-latest', // change if you want!
+      messages: [
+        { role: 'system', content: 'You are HiroshiKim AI(gemini-1.5-pro-latest)' }, // blank it or change the prompt!
+        { role: 'user', content: 'Hello!' }
+      ]
+    });
 
-    api.sendMessage(response, event.threadID, event.messageID);
+    console.log('Response:', response.data);
   } catch (error) {
-    api.sendMessage('An error occurred while processing your request.', event.threadID, event.messageID);
+    console.error('Error:', error.response ? error.response.data : error.message);
   }
 };
+
+test();
+    
