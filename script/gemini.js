@@ -5,9 +5,9 @@ module.exports.config = {
   version: '1.0.0',
   role: 0,
   hasPrefix: false,
-  aliases: ['gpt', 'openai'],
-  description: "An AI command powered by GPT-3",
-  usage: "Ai [prompt]",
+  aliases: ['gm', 'gemini'],
+  description: "An GEMINI command powered by Gemini",
+  usage: "gemini [prompt]",
   credits: 'Developer',
   cooldown: 3,
 };
@@ -23,7 +23,7 @@ module.exports.run = async function({ api, event, args }) {
   api.sendMessage('Please wait...', event.threadID, event.messageID);
 
   try {
-    const { data } = await axios.get(`https://nash-api-end.onrender.com/gemini?prompt=${encodeURIComponent(input)}`);
+    const { data } = await axios.get(`https://ryuu-apis.onrender.com/gemini?ask=${encodeURIComponent(input)}`);
     const response = data.response;
 
     api.sendMessage(response, event.threadID, event.messageID);
