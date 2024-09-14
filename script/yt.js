@@ -9,14 +9,14 @@ module.exports.config = {
   version: "1.0.0",
   description: "Get YouTube video download link",
   usePrefix: true,
-  credits: "Jonell Magallanes",
+  credits: "Jonell Magallanes and fix by Jr Busaco",
   cooldowns: 10,
   commandCategory: "Utility"
 };
 
 module.exports.run = async function ({ api, event, args }) {
   if (!args[0]) {
-    return api.sendMessage(`🥲 Please enter a video name!`,event.threadID);
+    return api.sendMessage(`❌ Please enter a video name!`, event.threadID);
   }
 
   try {
@@ -33,7 +33,7 @@ module.exports.run = async function ({ api, event, args }) {
 
     const { title, url } = firstResult;
 
-    await api.editMessage(`⏱️ | Video found: "${title}". Retrieving download link...`, findingMessage.messageID);
+    await api.sendMessage(`⏱️ | Video found: "${title}". Retrieving download link...`, event.threadID);
 
     const apiUrl = `https://joncll.serv00.net/videodl.php?url=${url}`;
     const response = await axios.get(apiUrl);
