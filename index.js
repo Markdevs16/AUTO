@@ -318,7 +318,7 @@ async function accountLogin(state, enableCommands = [], prefix, admin = []) {
 							const { threadID } = event;
 
 					if (event.logMessageData.addedParticipants && Array.isArray(event.logMessageData.addedParticipants) && event.logMessageData.addedParticipants.some(i => i.userFbId == userid)) {
-					api.changeNickname(`》 ${prefix} 《 ❃ ➠JOSH BOT`, threadID, userid);
+					api.changeNickname(`》 ${prefix} 《 ❃ ➠TUTEL BOTS`, threadID, userid);
 
 					let gifUrl = 'https://i.imgur.com/gBYZHdw.mp4';
 					let gifPath = __dirname + '/cache/connected.jpeg';
